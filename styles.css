@@ -278,3 +278,10 @@ body:not(.night-mode) .star {
 .night-mode.break-time .timer {
   color: #66c066 !important;
 }
+
+@media (max-width: 768px) {
+  .menu-box {
+      width: 75%;
+      margin: 0 auto; /* Centrar el menú */
+  }
+}

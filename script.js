@@ -68,12 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Comprobar si el navegador soporta la API de Audio
             if (typeof Audio !== "undefined") {
-                // Sonido de tic-tac de reloj
-                tickSound = new Audio('sounds/clock-tick.mp3');
-                
-                // Sonido de miau para cambios de modo
-                meowSound = new Audio('sounds/cat-meow.mp3');
-                
+                // Sonido de tic-tac de reloj                
                 // Alternativa en caso de error con archivos de audio
                 tickSound.onerror = function() {
                     console.log("Error al cargar sonido de tic-tac, usando alternativa");
@@ -184,8 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Variables para el temporizador
-    const workTime = 1 * 60; // 25 minutos en segundos
-    const breakTime = 1 * 60;  // 5 minutos en segundos
+    const workTime = 25 * 60; // 25 minutos en segundos
+    const breakTime = 5 * 60;  // 5 minutos en segundos
     let timeLeft = workTime;
     let timerId = null;
     let isPaused = false;
