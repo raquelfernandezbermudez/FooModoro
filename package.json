@@ -1,0 +1,12 @@
+{
+  "name": "foomodoro",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "vite": "^6.2.2"
+  }
+}
