@@ -179,8 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Variables para el temporizador
-    const workTime = 25 * 60; // 25 minutos en segundos
-    const breakTime = 5 * 60;  // 5 minutos en segundos
+    const workTime = 1 * 10; // 25 minutos en segundos
+    const breakTime = 1 * 10;  // 5 minutos en segundos
     let timeLeft = workTime;
     let timerId = null;
     let isPaused = false;
@@ -371,4 +371,104 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', startTimer);
     pauseButton.addEventListener('click', pauseTimer);
     resetButton.addEventListener('click', resetTimer);
+
+    // Nuevos elementos para lluvia y sonido
+    const rainToggleButton = document.getElementById('rainToggleButton');
+    const soundToggleButton = document.getElementById('soundToggleButton');
+    const rainOverlay = document.querySelector('.rain-overlay');
+
+    // Audio para diferentes modos
+    let rainSound = new Audio('sounds/rain.mp3');
+    let sunnySound = new Audio('sounds/sunnyDay.wav');
+    let backgroundSound = new Audio('sounds/incognita.mp3');
+    
+    let isRainMode = false;
+    let isSoundOn = false;
+
+    // Función para alternar modo lluvia/soleado
+    function toggleRainMode() {
+        isRainMode = !isRainMode;
+        rainOverlay.classList.toggle('active', isRainMode);
+        
+        // Cambiar texto del botón según el modo
+        rainToggleButton.textContent = isRainMode ? 'Modo soleado 🌞' : 'Modo lluvia 🌧️';
+        
+        rainOverlay.innerHTML = '';
+        if (isRainMode) {
+            generateRainDrops();
+        }
+    
+        // Lógica de sonido según el modo
+        if (isSoundOn) {
+            backgroundSound.pause();
+            rainSound.pause();
+            sunnySound.pause();
+            
+            if (isRainMode) {
+                rainSound.loop = true;
+                rainSound.play();
+            } else {
+                sunnySound.loop = true;
+                sunnySound.play();
+            }
+        }
+    }
+
+    // Modificar la función de sonido para adaptarse a los modos
+    function toggleBackgroundSound() {
+        isSoundOn = !isSoundOn;
+        
+        soundToggleButton.classList.toggle('sound-on', isSoundOn);
+    
+        if (isSoundOn) {
+            backgroundSound.pause();
+            rainSound.pause();
+            sunnySound.pause();
+            
+            if (isRainMode) {
+                rainSound.loop = true;
+                rainSound.play();
+            } else {
+                sunnySound.loop = true;
+                sunnySound.play();
+            }
+        } else {
+            rainSound.pause();
+            sunnySound.pause();
+            backgroundSound.pause();
+        }
+    }
+
+    function generateRainDrops() {
+        const numDrops = window.innerWidth / 10; // Número de gotas proporcional al ancho
+        
+        for (let i = 0; i < numDrops; i++) {
+            const drop = document.createElement('div');
+            drop.classList.add('rain-drop');
+            
+            // Posición horizontal aleatoria
+            drop.style.left = `${Math.random() * 100}%`;
+            
+            // Velocidad y delay aleatorios
+            const animationDuration = 0.7 + Math.random() * 0.6;
+            const animationDelay = Math.random() * -10; // Algunas gotas empiezan antes
+            
+            drop.style.animationDuration = `${animationDuration}s`;
+            drop.style.animationDelay = `${animationDelay}s`;
+            
+            rainOverlay.appendChild(drop);
+        }
+    }
+
+    // Eventos de los nuevos botones
+    rainToggleButton.addEventListener('click', toggleRainMode);
+    soundToggleButton.addEventListener('click', toggleBackgroundSound);
+
+    // Regenerar gotas al cambiar el tamaño de la ventana
+    window.addEventListener('resize', () => {
+        if (isRainMode) {
+            rainOverlay.innerHTML = '';
+            generateRainDrops();
+        }
+    });
 });

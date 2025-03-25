@@ -8,13 +8,12 @@
     <link rel="icon" href="img/gato.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="scene">
+        <div class="rain-overlay"></div>
         <div class="sky">
             <div class="cloud nube1"></div>
             <div class="cloud nube2"></div>
@@ -22,11 +21,9 @@
             <div class="cloud nube4"></div>
             <div class="cloud nube5"></div>
             <div class="cloud nube6"></div>
-            <!-- Las estrellas y la luna se añaden dinámicamente con JavaScript -->
         </div>
         <div class="ground"></div>
         
-        <!-- Menú central -->
         <div class="menu-container">
             <div class="menu-box">
                 <h1 class="menu-title">FooModoro</h1>
@@ -41,6 +38,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="scene-controls">
+            <button id="rainToggleButton" class="menu-button">Modo lluvia 🌧️</button>
+            <button id="soundToggleButton" class="menu-button">🔈</button>
         </div>
     </div>
     
