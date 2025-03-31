@@ -27,7 +27,9 @@
         <div class="menu-container">
             <div class="menu-box">
                 <h1 class="menu-title">FooModoro</h1>
-                <img src="img/gato.png" alt="Logo gato" class="logo-gato">
+                <div class="logo-container">
+                    <img src="img/gato.png" alt="Logo gato" class="logo-gato" id="statusLogo">
+                </div>
                 <div class="menu-content">
                     <p class="status-text" id="statusText">Tiempo de Trabajo</p>
                     <h2 class="timer" id="timer">25:00</h2>
@@ -43,8 +45,10 @@
         <div class="scene-controls">
             <button id="rainToggleButton" class="menu-button">Modo lluvia 🌧️</button>
             <button id="soundToggleButton" class="menu-button">🔈</button>
+            <button id="configButton" class="menu-button">⚙️</button>
         </div>
     </div>
+</div>
     
     <script type="module" src="script.js"></script>
 </body>

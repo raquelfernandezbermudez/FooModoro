@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Elementos del DOM
     const timerDisplay = document.getElementById('timer');
     const statusText = document.getElementById('statusText');
+    const statusLogo = document.getElementById('statusLogo');
     const startButton = document.getElementById('startButton');
     const pauseButton = document.getElementById('pauseButton');
     const resetButton = document.getElementById('resetButton');
@@ -286,6 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Cambiar a tiempo de descanso
                     timeLeft = breakTime;
                     statusText.textContent = 'Tiempo de Descanso';
+                    statusLogo.src="img/gatoDormido.png"; // Cambiar logo para descanso
                     document.body.classList.add('break-time');
                     
                     // Activar modo noche automáticamente durante el descanso
@@ -297,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Cambiar a tiempo de trabajo
                     timeLeft = workTime;
                     statusText.textContent = 'Tiempo de Trabajo';
+                    statusLogo.src="img/gato.png";
                     document.body.classList.remove('break-time');
                     
                     // Volver al modo día durante el tiempo de trabajo
